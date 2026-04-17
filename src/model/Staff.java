@@ -4,7 +4,7 @@ import enums.ROLE;
 
 import java.util.Date;
 
-public class Staff extends Person{
+public abstract class Staff extends Person{
     protected ROLE role;
     protected int workingHours;
     //constructor
