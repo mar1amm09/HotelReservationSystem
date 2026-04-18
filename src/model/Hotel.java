@@ -25,7 +25,7 @@ public class Hotel{
         if (room == null){
             return false;
         }
-        return room.isAvailable();
+        return room.getAvailability();
     }
     public static boolean validatePayment(double amount, double expectedAmount){
         if (amount <= 0){
@@ -33,7 +33,7 @@ public class Hotel{
             return false;
         }
         if (amount < expectedAmount){
-            System.out.println ("Insufficient Payment, excpected to pay: " + expectedAmount + " Received: " + amount) ;
+            System.out.println ("Insufficient Payment, expected to pay: " + expectedAmount + " Received: " + amount) ;
             return false;
         }
         System.out.println("Payment Successful");
