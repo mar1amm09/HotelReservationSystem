@@ -1,5 +1,4 @@
 package HotelReservationSystem.model;
-
 import java.util.Date;
 
 public class Reservation {
