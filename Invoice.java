@@ -1,7 +1,9 @@
 package HotelReservationSystem.model;
+
 import HotelReservationSystem.enums.paymentMethod;
 import java.util.Date;
 import.java.util.List;
+
 public class Invoice {
     private double totalAmount;
     protected List<paymentMethod>
