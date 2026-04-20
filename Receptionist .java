@@ -1,12 +1,9 @@
 package HotelReservationSystem.model;
-
 import HotelReservationSystem.database.HotelDatabase;
 import HotelReservationSystem.enums.ROLE;
 import HotelReservationSystem.enums.paymentMethod;
-
 import java.util.Date;
 import java.util.List;
-
 public class Receptionist extends Staff{
     public Receptionist(String username, String password, Date dateOfBirth, ROLE role, int workingHours){
         super(username, password,dateOfBirth,role,workingHours);
