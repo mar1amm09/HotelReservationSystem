@@ -2,7 +2,7 @@ package HotelReservationSystem.model;
 import java.time.LocalDate;
 public class Hotel{
     public static int validateIntegerInput(String input){
-        if (input == null||input.isempty()){
+        if (input == null||input.isEmpty()){
             return -1;
         }
         for (char c : input.toCharArray()){
@@ -10,6 +10,7 @@ public class Hotel{
                 return -1;
             }
         }
+        return Integer.parseInt(input);
     }
     public static boolean areDatesValid(LocalDate checkIn, LocalDate checkOut){
         if (checkIn == null || checkOut == null) {
