@@ -4,7 +4,7 @@ import HotelReservationSystem.enums.ROLE;
 
 import java.time.LocalDate;
 
-public class Staff extends Person{
+public abstract class Staff extends Person{
     protected ROLE role;
     protected int workingHours;
     //constructor
