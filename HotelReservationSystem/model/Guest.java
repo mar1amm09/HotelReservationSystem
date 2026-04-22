@@ -2,7 +2,7 @@ package HotelReservationSystem.model;
 import HotelReservationSystem.database.HotelDatabase;
 import HotelReservationSystem.enums.Gender;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 public class Guest extends Person{
     private double balance;
@@ -10,7 +10,7 @@ public class Guest extends Person{
     private Gender gender;
     private String roomPreferences;
     //constructor
-    public Guest(String username, String password, Date dateOfBirth, double balance, String address, Gender gender, String roomPreferences){
+    public Guest(String username, String password, LocalDate dateOfBirth, double balance, String address, Gender gender, String roomPreferences){
         super(username, password, dateOfBirth);
         this.balance = balance;
         this.address= address;
@@ -47,9 +47,10 @@ public class Guest extends Person{
     public void register (HotelDatabase dataBase, Guest g){
         dataBase.register(g);
     }
-    public void login (HotelDatabase dataBase, String username, String password)
+    public boolean login (HotelDatabase dataBase, String username, String password)
     {
         dataBase.login(username, password);
+        return true;
     }
     public void viewAvailableRooms(HotelDatabase dataBase){
         dataBase.viewAvailableRooms();
