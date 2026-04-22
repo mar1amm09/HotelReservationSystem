@@ -95,7 +95,7 @@ public class Main {
                         LocalDate checkOut = LocalDate.parse(scanner.nextLine());
 
                         System.out.println("Enter the reservation type");
-                        ReservationType type= ReservationType.valueOf(scanner.nextLine());
+                        ReservationType type= ReservationType.valueOf(scanner.nextLine().toUpperCase());
                         
                         Amenity a1 = new Amenity("WiFi");
                         Amenity a2 = new Amenity("Air Conditioning");
