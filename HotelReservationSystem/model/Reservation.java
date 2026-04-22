@@ -1,14 +1,12 @@
 package HotelReservationSystem.model;
 
-import HotelReservationSystem.enums.ReservationType;
-import java.util.Date;
+import java.time.LocalDate;
 
 public class Reservation {
     private Guest guest;
     private Room room;
-    private Date checkIn;
-    private Date checkOut;
-    private ReservationType type;
+    private LocalDate checkIn;
+    private LocalDate checkOut;
     public enum Status{
         PENDING,
         CONFIRMED,
@@ -17,13 +15,12 @@ public class Reservation {
     }
     private Status status;
     //constructor
-    public Reservation(Guest guest, Room room, Date checkIn, Date checkOut, Status status, ReservationType type){
+    public Reservation(Guest guest, Room room, LocalDate checkIn, LocalDate checkOut, Status status){
         this.guest = guest;
         this.room = room;
         this.checkIn = checkIn;
         this.checkOut = checkOut;
         this.status = status;
-        this.type = type;
     }
     //getters
     public Guest getGuest(){
@@ -32,17 +29,14 @@ public class Reservation {
     public Room getRoom(){
         return room;
     }
-    public Date getCheckIn(){
+    public LocalDate getCheckIn(){
         return checkIn;
     }
-    public Date getCheckOut(){
+    public LocalDate getCheckOut(){
         return checkOut;
     }
     public Status getStatus(){
         return status;
-    }
-    public ReservationType getType() {
-        return type;
     }
     //setter
     public void setStatus(Status status){
@@ -51,13 +45,10 @@ public class Reservation {
     public void updateReservationStatus(Reservation r, Reservation.Status status) {
         r.setStatus(status);
     }
-    public void setCheckIn(Date checkIn){
+    public void setCheckIn(LocalDate checkIn){
         this.checkIn = checkIn;
     }
-    public void setCheckOut(Date checkOut){
+    public void setCheckOut(LocalDate checkOut){
         this.checkOut = checkOut;
-    }
-    public void setType(ReservationType type) {
-        this.type = type;
     }
 }
