@@ -3,7 +3,7 @@ package HotelReservationSystem.database;
 import HotelReservationSystem.model.*;
 
 import java.util.ArrayList;
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.List;
 
 public class HotelDatabase {
@@ -86,7 +86,7 @@ public class HotelDatabase {
         }
         return (Reservation)getReservedRooms;
     }
-    public void createInvoice(Reservation r, List<HotelReservationSystem.enums.paymentMethod> paymentMethods, Date paymentDate){
+    public void createInvoice(Reservation r, List<HotelReservationSystem.enums.paymentMethod> paymentMethods, LocalDate paymentDate){
         Invoice i1 = new Invoice(r.getRoom().getRoomPrice(),paymentMethods,paymentDate,r.getType());
     }
     public Guest viewAllGuests(){
@@ -127,10 +127,10 @@ public class HotelDatabase {
         allAmenities.remove(amenity);
     }
     //receptionist management
-    public void setCheckInDate(Reservation r,Date checkInDate){
+    public void setCheckInDate(Reservation r,LocalDate checkInDate){
         r.setCheckIn(checkInDate);
     }
-    public void setCheckOutDate(Reservation r, Date checkOutDate){
+    public void setCheckOutDate(Reservation r, LocalDate checkOutDate){
         r.setCheckOut(checkOutDate);
     }
 }
