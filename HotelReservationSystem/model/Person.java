@@ -3,7 +3,7 @@ package HotelReservationSystem.model;
 import java.time.LocalDate;
 import java.util.Date;
 
-public class Person {
+public abstract class Person {
     protected String username;
     protected String password;
     protected LocalDate dateOfBirth;
