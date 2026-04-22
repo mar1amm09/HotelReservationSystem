@@ -17,6 +17,6 @@ public class Receptionist extends Staff{
     public void manageCheckOut(HotelDatabase dataBase, Reservation r, LocalDate checkOut){
         dataBase.setCheckOutDate(r,checkOut);
     }
-    public void createInvoice(HotelDatabase dataBase, Reservation r, List<paymentMethod> paymentMethods, LocalDate paymentDate,Reservation t){
-        dataBase.createInvoice(r, paymentMethods,paymentDate,t);}
+    public void createInvoice(HotelDatabase dataBase, double total, List<paymentMethod> paymentMethods, LocalDate paymentDate){
+        dataBase.createInvoice(total, paymentMethods,paymentDate);}
 }
