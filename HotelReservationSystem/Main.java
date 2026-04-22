@@ -288,7 +288,7 @@ public class Main {
                                 String name = scanner.nextLine();
                                 boolean removed = false;
                                 for (RoomType rt2 : database.roomTypes) {
-                                    if (rt2.getRoomTypeName() == name) {
+                                    if (rt2.getRoomTypeName().equals(name)) {
                                         admin.removeRoomType(database, rt2);
                                         System.out.println("RoomType removed successfully!!");
                                         removed = true;
