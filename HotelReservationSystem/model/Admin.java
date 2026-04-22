@@ -3,10 +3,10 @@ package HotelReservationSystem.model;
 import HotelReservationSystem.database.HotelDatabase;
 import HotelReservationSystem.enums.ROLE;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 public class Admin extends Staff{
-    public Admin(String username, String password, Date dateOfBirth, ROLE role, int workingHours){
+    public Admin(String username, String password, LocalDate dateOfBirth, ROLE role, int workingHours){
         super(username, password, dateOfBirth, role, workingHours);
     }
     public Guest viewAllGuests(HotelDatabase dataBase){
