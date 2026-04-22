@@ -2,15 +2,15 @@ package HotelReservationSystem.model;
 import HotelReservationSystem.enums.ReservationType;
 import HotelReservationSystem.enums.paymentMethod;
 import java.util.Date;
-import.java.util.List;
+import java.util.List;
 public class Invoice {
     private double totalAmount;
     protected List<paymentMethod>
-    paymentMethods;
+            paymentMethods;
     private Date paymentDate;
-    public Invoice(double totalAmount,<List<paymentMethod>paymentMethos,Date paymentDate,ReservationType type)
+    private  ReservationType type;
+    public Invoice(double totalAmount,List<paymentMethod>paymentMethos,Date paymentDate,ReservationType type)
     {
-        this.totalAmount+totalAmount;
         this.paymentMethods=paymentMethods;
         this.paymentDate=paymentDate;
         this.type= type;
@@ -26,12 +26,11 @@ public class Invoice {
     public double getTotalAmount(){
         return totalAmount;
     }
-    
-    public List<paymentMethod getPaymentMethods(){
-        return PaymentMethods;
-    }
-    public Date getPaymentDate(){
-        return PaymentDate;
 
+    public List<paymentMethod>getPaymentMethods(){
+        return paymentMethods;
+    }
+    public Date getPaymentDate() {
+        return paymentDate;
     }
 }
