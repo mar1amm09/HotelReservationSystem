@@ -1,5 +1,6 @@
 package HotelReservationSystem.model;
 
+import HotelReservationSystem.enums.ReservationType;
 import java.time.LocalDate;
 
 public class Reservation {
@@ -7,6 +8,7 @@ public class Reservation {
     private Room room;
     private LocalDate checkIn;
     private LocalDate checkOut;
+    private ReservationType type;
     public enum Status{
         PENDING,
         CONFIRMED,
@@ -15,12 +17,13 @@ public class Reservation {
     }
     private Status status;
     //constructor
-    public Reservation(Guest guest, Room room, LocalDate checkIn, LocalDate checkOut, Status status){
+    public Reservation(Guest guest, Room room, LocalDate checkIn, LocalDate checkOut, Status status,ReservationType type){
         this.guest = guest;
         this.room = room;
         this.checkIn = checkIn;
         this.checkOut = checkOut;
         this.status = status;
+        this.type = type;
     }
     //getters
     public Guest getGuest(){
@@ -38,6 +41,9 @@ public class Reservation {
     public Status getStatus(){
         return status;
     }
+    public ReservationType getType() {
+        return type;
+    }
     //setter
     public void setStatus(Status status){
         this.status = status;
@@ -50,5 +56,8 @@ public class Reservation {
     }
     public void setCheckOut(LocalDate checkOut){
         this.checkOut = checkOut;
+    }
+        public void setType(ReservationType type) {
+        this.type = type;
     }
 }
