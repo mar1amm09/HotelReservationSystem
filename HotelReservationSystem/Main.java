@@ -106,7 +106,7 @@ public class Main {
                         RoomType roomtype = new RoomType("Single", 5, 500.00);
                         Room room = new Room(101, roomtype, 100.0, true, 4, amenities);
 
-                        currentReservation = new Reservation(guest, room, checkIn, checkOut, Reservation.Status.PENDING);
+                        currentReservation = new Reservation(guest, room, checkIn, checkOut, Reservation.Status.PENDING,type);
                         guest.makeReservation(database, currentReservation);
 
                         System.out.println("Reservation created successfully!");
