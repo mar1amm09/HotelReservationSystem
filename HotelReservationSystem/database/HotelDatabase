@@ -14,6 +14,7 @@ public class HotelDatabase {
     private List <Reservation> getReservedRooms;
     private List <RoomType> roomTypes;
     private List <Amenity> allAmenities;
+    public List <Invoice> Invoices;
     // constructor
     public HotelDatabase(){
         guests = new ArrayList<>();
@@ -23,6 +24,7 @@ public class HotelDatabase {
         getReservedRooms = new ArrayList<>();
         roomTypes = new ArrayList<>();
         allAmenities = new ArrayList<>();
+        Invoices = new ArrayList<>();
     }
     //add guest
     public void addGuest(Guest g){
@@ -86,8 +88,9 @@ public class HotelDatabase {
         }
         return (Reservation)getReservedRooms;
     }
-    public void createInvoice(Reservation r, List<HotelReservationSystem.enums.paymentMethod> paymentMethods, LocalDate paymentDate,Reservation t){
-        Invoice i1 = new Invoice(r.getRoom().getRoomPrice(),paymentMethods,paymentDate,r.getType());
+    public void createInvoice(double total, List<HotelReservationSystem.enums.paymentMethod> paymentMethods, LocalDate paymentDate){
+        Invoice i1 = new Invoice(total,paymentMethods,paymentDate);
+        Invoices.add(i1);
     }
     public Guest viewAllGuests(){
         return (Guest)guests;
