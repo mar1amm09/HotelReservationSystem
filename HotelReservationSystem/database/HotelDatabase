@@ -87,7 +87,7 @@ public class HotelDatabase {
         return (Reservation)getReservedRooms;
     }
     public void createInvoice(Reservation r, List<HotelReservationSystem.enums.paymentMethod> paymentMethods, Date paymentDate){
-        Invoice i1 = new Invoice(r.getRoom().getRoomPrice(),paymentMethods,paymentDate);
+        Invoice i1 = new Invoice(r.getRoom().getRoomPrice(),paymentMethods,paymentDate,r.getType());
     }
     public Guest viewAllGuests(){
         return (Guest)guests;
