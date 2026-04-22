@@ -1,5 +1,6 @@
 package HotelReservationSystem.model;
 
+import HotelReservationSystem.enums.ReservationType;
 import HotelReservationSystem.database.HotelDatabase;
 import HotelReservationSystem.enums.Gender;
 import java.time.LocalDate;
@@ -92,6 +93,10 @@ public class Main {
 
                         System.out.print("Enter check-out date (YYYY-MM-DD): ");
                         LocalDate checkOut = LocalDate.parse(scanner.nextLine());
+
+                        System.out.println("Enter the reservation type");
+                        ReservationType type= ReservationType.valueOf(scanner.nextLine());
+                        
                         Amenity a1 = new Amenity("WiFi");
                         Amenity a2 = new Amenity("Air Conditioning");
 
@@ -99,7 +104,6 @@ public class Main {
                         amenities.add(a1);
                         amenities.add(a2);
                         RoomType roomtype = new RoomType("Single", 5, 500.00);
-
                         Room room = new Room(101, roomtype, 100.0, true, 4, amenities);
 
                         currentReservation = new Reservation(guest, room, checkIn, checkOut, Reservation.Status.PENDING);
