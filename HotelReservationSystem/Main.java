@@ -3,6 +3,8 @@ package HotelReservationSystem.model;
 import HotelReservationSystem.database.HotelDatabase;
 import HotelReservationSystem.enums.Gender;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class Main {
@@ -44,7 +46,6 @@ public class Main {
 
         Guest guest = new Guest(username, password, dob, balance, address, gender, roomPreferences);
 
-        // Register (assuming login also adds to database or you have register method)
         guest.login(database, username, password);
 
         // === LOGIN ===
@@ -91,11 +92,17 @@ public class Main {
 
                         System.out.print("Enter check-out date (YYYY-MM-DD): ");
                         LocalDate checkOut = LocalDate.parse(scanner.nextLine());
-                        String[] amenities = {"WiFi", "Air Conditioning", "TV", "Mini Bar"};
+                        Amenity a1 = new Amenity("WiFi");
+                        Amenity a2 = new Amenity("Air Conditioning");
 
-                        Room room = new Room(101, "Single", 100.0, true, 4, amenities);
+                        List<Amenity> amenities = new ArrayList<>();
+                        amenities.add(a1);
+                        amenities.add(a2);
+                        RoomType roomtype = new RoomType("Single", 5, 500.00);
 
-                        currentReservation = new Reservation(guest, room, checkIn, checkOut);
+                        Room room = new Room(101, roomtype, 100.0, true, 4, amenities);
+
+                        currentReservation = new Reservation(guest, room, checkIn, checkOut, Reservation.Status.PENDING);
                         guest.makeReservation(database, currentReservation);
 
                         System.out.println("Reservation created successfully!");
@@ -132,4 +139,3 @@ public class Main {
         scanner.close();
     }
 }
-
