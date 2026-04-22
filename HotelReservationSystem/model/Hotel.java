@@ -1,6 +1,6 @@
 package HotelReservationSystem.model;
 import java.time.LocalDate;
-public class Hotel{
+public abstract class Hotel{
     public static int validateIntegerInput(String input){
         if (input == null||input.isEmpty()){
             return -1;
