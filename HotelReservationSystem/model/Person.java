@@ -1,13 +1,14 @@
 package HotelReservationSystem.model;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 public class Person {
     protected String username;
     protected String password;
-    protected Date dateOfBirth;
+    protected LocalDate dateOfBirth;
     //constructor
-    public Person (String username, String password, Date dateOfBirth){
+    public Person (String username, String password, LocalDate dateOfBirth){
         this.username = username;
         this.password = password;
         this.dateOfBirth = dateOfBirth;
@@ -19,7 +20,7 @@ public class Person {
     public String getPassword(){
         return password;
     }
-    public Date getDate(){
+    public LocalDate getDate(){
         return dateOfBirth;
     }
     //setters
@@ -29,7 +30,7 @@ public class Person {
     public void setPassword(String password){
         this.password = password;
     }
-    public void setDateOfBirth(Date dateOfBirth){
+    public void setDateOfBirth(LocalDate dateOfBirth){
         this.dateOfBirth = dateOfBirth;
     }
 }
