@@ -2,13 +2,13 @@ package HotelReservationSystem.model;
 
 import HotelReservationSystem.enums.ROLE;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 public class Staff extends Person{
     protected ROLE role;
     protected int workingHours;
     //constructor
-    public Staff(String username, String password, Date dateOfBirth, ROLE role, int workingHours){
+    public Staff(String username, String password, LocalDate dateOfBirth, ROLE role, int workingHours){
         super(username, password, dateOfBirth);
         this.role = role;
         this.workingHours = workingHours;
