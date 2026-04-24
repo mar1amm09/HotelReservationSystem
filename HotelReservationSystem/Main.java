@@ -20,12 +20,12 @@ public class Main {
         int x = scanner.nextInt();
         switch (x){
             case 1:{
-                System.out.println("=== Guest Registration ===");
+                System.out.println("GUEST REGISTRATION");
 
-                System.out.print("Enter username: ");
+                System.out.print("Please enter username: ");
                 String username = scanner.nextLine();
 
-                System.out.print("Enter password: ");
+                System.out.print("Please enter password: ");
                 String password = scanner.nextLine();
 
                 System.out.print("Enter year of birth: ");
@@ -55,10 +55,10 @@ public class Main {
 
                 guest.login(database, username, password);
 
-                // === LOGIN ===
-                System.out.println("\n=== Guest Login ===");
+                //LOGIN
+                System.out.println("\n GUEST LOGIN");
 
-                System.out.print("Enter username: ");
+                System.out.print("Please enter username: ");
                 String loginUser = scanner.nextLine();
 
                 System.out.print("Enter password: ");
