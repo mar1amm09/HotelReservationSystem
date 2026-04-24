@@ -31,7 +31,7 @@ public class HotelDatabase {
 
         guests.add(g);
     }
-    //check username
+    //Check username
     public boolean doesUsernameExist(String username){
         for (Guest i : guests){
             if (i.getUsername().equals(username)) {
