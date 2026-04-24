@@ -61,7 +61,7 @@ public class Main {
                 System.out.print("Please enter username: ");
                 String loginUser = scanner.nextLine();
 
-                System.out.print("Enter password: ");
+                System.out.print("Please enter password: ");
                 String loginPass = scanner.nextLine();
 
                 if (!guest.login(database, loginUser, loginPass)) {
