@@ -110,55 +110,35 @@ public class Main {
                                 } catch (InvalidDateException e){
                                     System.out.println(e.getMessage());
                                 }
-                                List<Amenity> amenities = new ArrayList<>();
-                                System.out.println("Enter amenities one by one (type 'done' to finish):");
-                                while (true) {
-                                String amenityInput = scanner.nextLine();
-                                if (amenityInput.equalsIgnoreCase("done")) {
+                                System.out.print("Enter Room ID you want to reserve: ");
+                                int selectedRoomId = Integer.parseInt(scanner.nextLine());
+                                
+                                // find room in database
+                                Room selectedRoom = null;
+                                for (Room r : database.rooms) {
+                                    if (r.getRoomId() == selectedRoomId) {
+                                        selectedRoom = r;
+                                        break;
+                                    }
+                                }
+                                
+                                // check if room exists
+                                if (selectedRoom == null) {
+                                    System.out.println("Room not found.");
                                     break;
                                 }
-                                Amenity amenity = new Amenity(amenityInput);
-                                amenities.add(amenity);
-                                }
-                            
-                                System.out.println("Enter room type name:");
-                                String roomTypeName = scanner.nextLine();
-                                System.out.println("Enter max capacity:");
-                                int maxCapacity = Integer.parseInt(scanner.nextLine());
-                                System.out.println("Enter price:");
-                                double price = Double.parseDouble(scanner.nextLine());
-                                RoomType roomtype = new RoomType(roomTypeName, maxCapacity, price);
-                            
-                                System.out.println("Enter room ID:");
-                                int roomId = Integer.parseInt(scanner.nextLine());
                                 
-                                System.out.println("Enter room price:");
-                                double roomPrice = Double.parseDouble(scanner.nextLine());
+                                // validate availability
+                                Hotel.isRoomAvailable(selectedRoom);
                                 
-                                System.out.println("Is the room available? (true/false):");
-                                boolean availability = Boolean.parseBoolean(scanner.nextLine());
-                                
-                                System.out.println("Enter floor number:");
-                                int floor = Integer.parseInt(scanner.nextLine());
-                            
-                                Room room = new Room(roomId, roomtype, roomPrice, availability, floor, amenities);
-                                System.out.println("Enter the reservation type");
-                                Hotel.validateRoomAvailability(room);
-
+                                // choose reservation type
                                 System.out.println("Enter the reservation type:");
                                 ReservationType type = ReservationType.valueOf(scanner.nextLine().toUpperCase());
-
-                                currentReservation = new Reservation( guest, room, checkIn, checkOut,Reservation.Status.PENDING, type);
+                                
+                                // create reservation
+                                currentReservation = new Reservation(guest, selectedRoom, checkIn, checkOut, Reservation.Status.PENDING, type);
                                 guest.makeReservation(database, currentReservation);
-
                                 System.out.println("Reservation created successfully!");
-
-                                } catch (InvalidDateException | RoomNotAvailableException e) {
-                                System.out.println("Error: " + e.getMessage());
-
-                                } catch (Exception e) {
-                                System.out.println("Unexpected error: " + e.getMessage());
-                                }
                                 break;
 
                         case 3:
