@@ -110,15 +110,38 @@ public class Main {
                                 } catch (InvalidDateException e){
                                     System.out.println(e.getMessage());
                                 }
-                                Amenity a1 = new Amenity("WiFi");
-                                Amenity a2 = new Amenity("Air Conditioning");
-
                                 List<Amenity> amenities = new ArrayList<>();
-                                amenities.add(a1);
-                                amenities.add(a2);
-                                RoomType roomtype = new RoomType("Single", 5, 500.00);
-
-                                Room room = new Room(101, roomtype, 100.0, true, 4, amenities);
+                                System.out.println("Enter amenities one by one (type 'done' to finish):");
+                                while (true) {
+                                String amenityInput = scanner.nextLine();
+                                if (amenityInput.equalsIgnoreCase("done")) {
+                                    break;
+                                }
+                                Amenity amenity = new Amenity(amenityInput);
+                                amenities.add(amenity);
+                                }
+                            
+                                System.out.println("Enter room type name:");
+                                String roomTypeName = scanner.nextLine();
+                                System.out.println("Enter max capacity:");
+                                int maxCapacity = Integer.parseInt(scanner.nextLine());
+                                System.out.println("Enter price:");
+                                double price = Double.parseDouble(scanner.nextLine());
+                                RoomType roomtype = new RoomType(roomTypeName, maxCapacity, price);
+                            
+                                System.out.println("Enter room ID:");
+                                int roomId = Integer.parseInt(scanner.nextLine());
+                                
+                                System.out.println("Enter room price:");
+                                double roomPrice = Double.parseDouble(scanner.nextLine());
+                                
+                                System.out.println("Is the room available? (true/false):");
+                                boolean availability = Boolean.parseBoolean(scanner.nextLine());
+                                
+                                System.out.println("Enter floor number:");
+                                int floor = Integer.parseInt(scanner.nextLine());
+                            
+                                Room room = new Room(roomId, roomtype, roomPrice, availability, floor, amenities);
                                 System.out.println("Enter the reservation type");
                                 Hotel.validateRoomAvailability(room);
 
