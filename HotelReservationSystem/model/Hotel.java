@@ -1,42 +1,43 @@
 package HotelReservationSystem.model;
 import java.time.LocalDate;
+import HotelReservationSystem.exceptions;
 public abstract class Hotel{
-    public static int validateIntegerInput(String input){
+    public static int validateIntegerInput throws InvalidInputException(String input){
         if (input == null||input.isEmpty()){
-            return -1;
+            throw new InvalidInputException("Input cannot be empty or null.");
         }
         for (char c : input.toCharArray()){
             if (!Character.isDigit(c)) {
-                return -1;
+            throw new InvalidInputException("Input should contain only digits.");
             }
         }
         return Integer.parseInt(input);
     }
-    public static boolean areDatesValid(LocalDate checkIn, LocalDate checkOut){
+    public static boolean areDatesValid throws InvalidDateException(LocalDate checkIn, LocalDate checkOut){
         if (checkIn == null || checkOut == null) {
-            return false;
+            throw new InvalidDateException("Date cannot be null");
         }
-        return !checkIn.isAfter(checkOut);
+        if (checkIn.isAfter(checkOut)){
+            throw new InvalidDateException("Check in date cannot be after check out date.");
+        }
     }
-    public static boolean isGuestValid(Guest guest){
-        return guest != null;
+    public static boolean isGuestValid throws InvalidInputException(Guest guest){
+        if (guest == null){
+            throw new InvalidInputException("Guest cannot be null");
+        }
     }
-    public static boolean isRoomAvailable(Room room){
+    public static boolean isRoomAvailable throws RoomNotAvailableException(Room room){
         if (room == null){
-            return false;
+            throw new RoomNotAvailableException("Room selected does not exist");
         }
         return room.getAvailability();
     }
-    public static boolean validatePayment(double amount, double expectedAmount){
+    public static boolean validatePayment throws InvalidPaymentException(double amount, double expectedAmount){
         if (amount <= 0){
-            System.out.println ("Payment amount must be greater than zero. ");
-            return false;
+            throw new InvalidPaymentException("Payment amount must be greater than zero. ");
         }
         if (amount < expectedAmount){
-            System.out.println ("Insufficient Payment, expected to pay: " + expectedAmount + " Received: " + amount) ;
-            return false;
+            throw new InvalidPaymentException("Insufficient Payment, expected to pay: " + expectedAmount + " Received: " + amount) ;
         }
-        System.out.println("Payment Successful");
-        return true;
     }
 }
