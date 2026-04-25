@@ -18,7 +18,7 @@ public class Admin extends Staff{
     public Reservation viewAllReservations(HotelDatabase dataBase){
         return dataBase.viewAllReservations();
     }
-    //admin CRUD
+    //Admin CRUD
     public void addRoomType(HotelDatabase dataBase, RoomType type){
         dataBase.addRoomType(type);
     }
@@ -35,7 +35,7 @@ public class Admin extends Staff{
     public void removeRoom(HotelDatabase dataBase, Room room){
         dataBase.removeRoom(room);
     }
-    //Amenity
+    //Amenities
     public Amenity viewAllAmenities(HotelDatabase dataBase){
         return dataBase.viewAllAmenities();
     }
