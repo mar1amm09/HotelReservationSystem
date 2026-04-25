@@ -5,6 +5,7 @@ import HotelReservationSystem.enums.Gender;
 import HotelReservationSystem.enums.ROLE;
 import HotelReservationSystem.enums.ReservationType;
 import HotelReservationSystem.enums.paymentMethod;
+import HotelReservationSystem.exceptions;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -99,6 +100,10 @@ public class Main {
 
                                 System.out.print("Enter check-out date (YYYY-MM-DD): ");
                                 LocalDate checkOut = LocalDate.parse(scanner.nextLine());
+                                try Hotel.areDatesValid(checkIn,checkOut);{
+                                } catch (InvalidDateException e){
+                                    System.out.println(e.getMessage());
+                                }
                                 Amenity a1 = new Amenity("WiFi");
                                 Amenity a2 = new Amenity("Air Conditioning");
 
@@ -115,8 +120,8 @@ public class Main {
 
                                 System.out.println("Reservation created successfully!");
 
-                            } catch (Exception e) {
-                                System.out.println("Invalid input. Try again.");
+                            } catch (InvalidInputException e) {
+                                System.out.println(e.getMessage());
                             }
                             break;
 
