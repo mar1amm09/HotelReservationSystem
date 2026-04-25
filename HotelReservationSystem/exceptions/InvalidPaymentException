@@ -1,0 +1,4 @@
+public InvalidPaymentException(String message) {
+        super(message);
+    }
+}
