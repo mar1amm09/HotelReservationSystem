@@ -5,7 +5,7 @@ import HotelReservationSystem.enums.Gender;
 import HotelReservationSystem.enums.ROLE;
 import HotelReservationSystem.enums.ReservationType;
 import HotelReservationSystem.enums.paymentMethod;
-import HotelReservationSystem.exceptions;
+import HotelReservationSystem.exceptions.*;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -19,6 +19,7 @@ public class Main {
         HotelDatabase database = new HotelDatabase();
         System.out.println("Are you 1.Guest, 2.Admin, or 3.Receptionist");
         int x = scanner.nextInt();
+        scanner.nextLine();
         switch (x){
             case 1:{
                 System.out.println("GUEST REGISTRATION");
@@ -31,17 +32,21 @@ public class Main {
 
                 System.out.print("Enter year of birth: ");
                 int year = Integer.parseInt(scanner.nextLine());
+                scanner.nextLine();
 
                 System.out.print("Enter month of birth (1-12): ");
                 int month = Integer.parseInt(scanner.nextLine());
+                scanner.nextLine();
 
                 System.out.print("Enter day of birth: ");
                 int day = Integer.parseInt(scanner.nextLine());
+                scanner.nextLine();
 
                 LocalDate dob = LocalDate.of(year, month, day);
 
                 System.out.print("Enter balance: ");
                 double balance = Double.parseDouble(scanner.nextLine());
+                scanner.nextLine();
 
                 System.out.print("Enter address: ");
                 String address = scanner.nextLine();
@@ -114,16 +119,23 @@ public class Main {
 
                                 Room room = new Room(101, roomtype, 100.0, true, 4, amenities);
                                 System.out.println("Enter the reservation type");
-                                ReservationType type= ReservationType.valueOf(scanner.nextLine().toUpperCase());
-                                currentReservation = new Reservation(guest, room, checkIn, checkOut, Reservation.Status.PENDING, type);
+                                Hotel.validateRoomAvailability(room);
+
+                                System.out.println("Enter the reservation type:");
+                                ReservationType type = ReservationType.valueOf(scanner.nextLine().toUpperCase());
+
+                                currentReservation = new Reservation( guest, room, checkIn, checkOut,Reservation.Status.PENDING, type);
                                 guest.makeReservation(database, currentReservation);
 
                                 System.out.println("Reservation created successfully!");
 
-                            } catch (InvalidInputException e) {
-                                System.out.println(e.getMessage());
-                            }
-                            break;
+                                } catch (InvalidDateException | RoomNotAvailableException e) {
+                                System.out.println("Error: " + e.getMessage());
+
+                                } catch (Exception e) {
+                                System.out.println("Unexpected error: " + e.getMessage());
+                                }
+                                break;
 
                         case 3:
                             if (currentReservation != null) {
@@ -148,6 +160,7 @@ public class Main {
                             System.out.println("Invalid choice.");
                     }
                 }
+                break;
             }
             case 2: {
                 // ===== ADMIN TEST =====
@@ -205,7 +218,7 @@ public class Main {
                                         "Enter d when done.");
                                 String amenity = scanner.nextLine();
                                 List<Amenity> amenities = new ArrayList<>();
-                                while (amenity != "d") {
+                                while (!amenity.equals("d")) {
                                     Amenity a = new Amenity(amenity);
                                     amenities.add(a);
                                 }
@@ -325,6 +338,7 @@ public class Main {
                         }
                     }
                 }
+                break;
             }
                 case 3:{
 
@@ -479,6 +493,7 @@ public class Main {
                             }
                         }
                     }
+                    break;
                 }
         scanner.close();
         }
