@@ -1,0 +1,4 @@
+public RoomNotAvailableException(String message) {
+        super(message);
+    }
+}
