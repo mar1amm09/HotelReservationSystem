@@ -92,6 +92,7 @@ public class Main {
 
                     System.out.print("Choose an option: ");
                     int choice = Integer.parseInt(scanner.nextLine());
+                    scanner.nextLine();
 
                     switch (choice) {
                         case 1:
@@ -173,17 +174,21 @@ public class Main {
 
                 System.out.print("Enter year of birth: ");
                 int year1 = Integer.parseInt(scanner.nextLine());
+                scanner.nextLine();
 
                 System.out.print("Enter month of birth (1-12): ");
                 int month1 = Integer.parseInt(scanner.nextLine());
+                scanner.nextLine();
 
                 System.out.print("Enter day of birth: ");
                 int day1 = Integer.parseInt(scanner.nextLine());
+                scanner.nextLine();
 
                 LocalDate dob1 = LocalDate.of(year1, month1, day1);
 
                 System.out.print("Enter working hours: ");
                 int wh = Integer.parseInt(scanner.nextLine());
+                scanner.nextLine();
 
                 Admin admin = new Admin(username1, password1, dob1, ROLE.ADMIN, wh);
 
@@ -193,27 +198,34 @@ public class Main {
                         "2. View (Guests, Rooms, RoomTypes, Amenities, Reservations" +
                         "3. Delete (Room, RoomType, Amenity");
                 int choice = Integer.parseInt(scanner.nextLine());
+                scanner.nextLine();
                 switch (choice) {
                     case 1: {
                         System.out.print("1.Room" +
                                 "2.RoomType" +
                                 "3.Amenity ");
                         int choice2 = Integer.parseInt(scanner.nextLine());
+                        scanner.nextLine();
                         switch (choice2) {
                             case 1: {
                                 System.out.println("ID?");
                                 int id = scanner.nextInt();
+                                scanner.nextLine();
                                 System.out.println("RoomType?");
                                 String roomtype = scanner.nextLine();
                                 System.out.println("Max capacity of roomtype?");
                                 int max = scanner.nextInt();
+                                scanner.nextLine();
                                 System.out.println("Price of roomtype?");
                                 double price = scanner.nextDouble();
+                                scanner.nextLine();
                                 RoomType rt = new RoomType(roomtype, max, price);
                                 System.out.println("Is this room currently available?");
                                 boolean available = scanner.nextBoolean();
+                                scanner.nextLine();
                                 System.out.println("Room Floor?");
                                 int floor = scanner.nextInt();
+                                scanner.nextLine();
                                 System.out.println("Room Amenities?" +
                                         "Enter d when done.");
                                 String amenity = scanner.nextLine();
@@ -232,8 +244,10 @@ public class Main {
                                 String name = scanner.nextLine();
                                 System.out.println("Maximum capacity of room?");
                                 int max = scanner.nextInt();
+                                scanner.nextLine();
                                 System.out.println("Price?");
                                 double price = scanner.nextDouble();
+                                scanner.nextLine();
                                 RoomType rt1 = new RoomType(name, max, price);
                                 admin.addRoomType(database, rt1);
                                 System.out.println("Room Type added successfully!!");
@@ -256,6 +270,7 @@ public class Main {
                                 "4.Amenities" +
                                 "5.Reservations");
                         int choice3 = Integer.parseInt(scanner.nextLine());
+                        scanner.nextLine();
                         switch (choice3) {
                             case 1: {
                                 admin.viewAllGuests(database);
@@ -284,10 +299,12 @@ public class Main {
                                 "2.RoomType" +
                                 "3.Amenity ");
                         int choice4 = Integer.parseInt(scanner.nextLine());
+                        scanner.nextLine();
                         switch (choice4) {
                             case 1: {
                                 System.out.println("Enter id of room to delete");
                                 int id = scanner.nextInt();
+                                scanner.nextLine();
                                 boolean removed = false;
                                 for (Room r : database.rooms) {
                                     if (r.getRoomId() == id) {
@@ -352,17 +369,21 @@ public class Main {
 
                         System.out.print("Enter year of birth: ");
                         int year2 = Integer.parseInt(scanner.nextLine());
+                        scanner.nextLine();
 
                         System.out.print("Enter month of birth (1-12): ");
                         int month2 = Integer.parseInt(scanner.nextLine());
+                        scanner.nextLine();
 
                         System.out.print("Enter day of birth: ");
                         int day2 = Integer.parseInt(scanner.nextLine());
+                        scanner.nextLine();
 
                         LocalDate dob2 = LocalDate.of(year2, month2, day2);
 
                         System.out.print("Enter working hours: ");
                         int wh2 = Integer.parseInt(scanner.nextLine());
+                        scanner.nextLine();
                         Receptionist receptionist = new Receptionist(username2, password2, dob2, ROLE.RECEPTIONIST,wh2);
 
                         System.out.println("What do you want to do?" +
@@ -370,26 +391,30 @@ public class Main {
                                 "2.Manage Check Out" +
                                 "3.Create Invoice");
                         int choice5 = Integer.parseInt(scanner.nextLine());
+                        scanner.nextLine();
                         switch (choice5){
                             case 1:{
                                 System.out.println("Enter room id of reservation you want to manage");
                                 int id2 = scanner.nextInt();
+                                scanner.nextLine();
                                 boolean found = false;
                                 for (Reservation r : database.reservations){
                                     if (r.getRoom().getRoomId() == id2){
                                         System.out.println("Check in date: " + r.getCheckIn());
                                         System.out.println("Do you wish to edit this date? Y/N");
-                                        scanner.nextLine();
                                         String manage = scanner.nextLine();
                                         if (manage.equals("Y")){
                                             System.out.print("Enter year: ");
                                             int year3 = Integer.parseInt(scanner.nextLine());
+                                            scanner.nextLine();
 
                                             System.out.print("Enter month(1-12): ");
                                             int month3 = Integer.parseInt(scanner.nextLine());
+                                            scanner.nextLine();
 
                                             System.out.print("Enter day: ");
                                             int day3 = Integer.parseInt(scanner.nextLine());
+                                            scanner.nextLine();
 
                                             LocalDate CheckInDate = LocalDate.of(year3, month3, day3);
 
@@ -405,6 +430,7 @@ public class Main {
                             case 2:{
                                 System.out.println("Enter room id of reservation you want to manage");
                                 int id3 = scanner.nextInt();
+                                scanner.nextLine();
                                 boolean found = false;
                                 for (Reservation r : database.reservations){
                                     if (r.getRoom().getRoomId() == id3){
@@ -414,12 +440,15 @@ public class Main {
                                         if (manage.equals("Y")){
                                             System.out.print("Enter year: ");
                                             int year4 = Integer.parseInt(scanner.nextLine());
+                                            scanner.nextLine();
 
                                             System.out.print("Enter month(1-12): ");
                                             int month4 = Integer.parseInt(scanner.nextLine());
+                                            scanner.nextLine();
 
                                             System.out.print("Enter day: ");
                                             int day4 = Integer.parseInt(scanner.nextLine());
+                                            scanner.nextLine();
 
                                             LocalDate CheckOutDate = LocalDate.of(year4, month4, day4);
 
@@ -440,6 +469,7 @@ public class Main {
                                         "2.Credit" +
                                         "3.Online");
                                 int pay = scanner.nextInt();
+                                scanner.nextLine();
                                 switch (pay) {
                                     case 1: {
                                         paymentMethod method = paymentMethod.CASH;
@@ -471,6 +501,7 @@ public class Main {
                                         "3.All inclusive" +
                                         "4.Bed and breakfast");
                                 int type = scanner.nextInt();
+                                scanner.nextLine();
                                 switch (type) {
                                     case 1: {
                                         ReservationType t2 = ReservationType.FULL_BOARD;
