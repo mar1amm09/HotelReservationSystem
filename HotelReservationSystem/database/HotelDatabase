@@ -26,7 +26,7 @@ public class HotelDatabase {
         allAmenities = new ArrayList<>();
         Invoices = new ArrayList<>();
     }
-    //add guest
+    //Add guest
     public void addGuest(Guest g){
 
         guests.add(g);
