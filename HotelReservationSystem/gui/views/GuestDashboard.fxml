@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="HotelReservationSystem.gui.controllers.GuestDashboardController"
+            styleClass="main-background">
+
+    <top>
+        <HBox spacing="20" alignment="CENTER_LEFT" styleClass="top-bar">
+            <padding>
+                <Insets top="20" right="25" bottom="20" left="25"/>
+            </padding>
+
+            <Label text="Guest Dashboard" styleClass="title-label"/>
+
+            <Region HBox.hgrow="ALWAYS"/>
+
+            <Button text="Logout"
+                    onAction="#handleLogout"
+                    styleClass="secondary-button"/>
+        </HBox>
+    </top>
+
+    <center>
+        <VBox spacing="18" alignment="TOP_CENTER">
+            <padding>
+                <Insets top="30" right="40" bottom="30" left="40"/>
+            </padding>
+
+            <Label text="Profile Information" styleClass="subtitle-label"/>
+
+            <GridPane hgap="15" vgap="15" maxWidth="500" styleClass="card">
+                <padding>
+                    <Insets top="25" right="25" bottom="25" left="25"/>
+                </padding>
+
+                <Label text="Username:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+                <Label fx:id="usernameLabel" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+
+                <Label text="Date of Birth:" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+                <Label fx:id="dobLabel" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+
+                <Label text="Gender:" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+                <Label fx:id="genderLabel" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+
+                <Label text="Address:" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+                <Label fx:id="addressLabel" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+
+                <Label text="Balance:" GridPane.rowIndex="4" GridPane.columnIndex="0"/>
+
+                <HBox spacing="10"
+                      alignment="CENTER_LEFT"
+                      GridPane.rowIndex="4"
+                      GridPane.columnIndex="1">
+
+                    <Label fx:id="balanceLabel"/>
+
+                    <Button text="Add Money"
+                            onAction="#updateBalance"
+                            styleClass="secondary-button"/>
+                </HBox>
+            </GridPane>
+
+            <HBox spacing="15" alignment="CENTER">
+                <Button text="Browse Rooms"
+                        onAction="#goToBrowseRooms"
+                        styleClass="main-button"/>
+
+                <Button text="My Reservations"
+                        onAction="#goToReservations"
+                        styleClass="main-button"/>
+
+                <Button text="Checkout / Payment"
+                        onAction="#goToCheckout"
+                        styleClass="main-button"/>
+            </HBox>
+
+            <Label fx:id="messageLabel"/>
+
+        </VBox>
+    </center>
+
+</BorderPane>

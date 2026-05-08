@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="HotelReservationSystem.gui.controllers.ManageRoomsController"
+            styleClass="main-background">
+
+    <top>
+        <HBox spacing="20" alignment="CENTER_LEFT" styleClass="top-bar">
+            <padding>
+                <Insets top="20" right="25" bottom="20" left="25"/>
+            </padding>
+
+            <Label text="Manage Rooms" styleClass="title-label"/>
+
+            <Region HBox.hgrow="ALWAYS"/>
+
+            <Button text="Back"
+                    onAction="#goBack"
+                    styleClass="secondary-button"/>
+        </HBox>
+    </top>
+
+    <center>
+        <VBox spacing="15">
+            <padding>
+                <Insets top="20" right="35" bottom="20" left="35"/>
+            </padding>
+
+            <GridPane hgap="12" vgap="12" styleClass="card">
+                <padding>
+                    <Insets top="20" right="20" bottom="20" left="20"/>
+                </padding>
+
+                <Label text="Room ID:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+                <TextField fx:id="roomIdField"
+                           promptText="101"
+                           GridPane.rowIndex="0"
+                           GridPane.columnIndex="1"/>
+
+                <Label text="Room Type:" GridPane.rowIndex="0" GridPane.columnIndex="2"/>
+                <ComboBox fx:id="typeCombo"
+                          promptText="Choose Room Type"
+                          GridPane.rowIndex="0"
+                          GridPane.columnIndex="3"/>
+
+                <Label text="Capacity:" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+                <TextField fx:id="capacityField"
+                           promptText="Auto from room type"
+                           editable="false"
+                           GridPane.rowIndex="1"
+                           GridPane.columnIndex="1"/>
+
+                <Label text="Price:" GridPane.rowIndex="1" GridPane.columnIndex="2"/>
+                <TextField fx:id="priceField"
+                           promptText="1500"
+                           GridPane.rowIndex="1"
+                           GridPane.columnIndex="3"/>
+
+                <Label text="Floor:" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+                <TextField fx:id="floorField"
+                           promptText="1"
+                           GridPane.rowIndex="2"
+                           GridPane.columnIndex="1"/>
+
+                <Label text="Amenities:" GridPane.rowIndex="2" GridPane.columnIndex="2"/>
+
+                <ScrollPane prefHeight="100"
+                            prefWidth="230"
+                            fitToWidth="true"
+                            GridPane.rowIndex="2"
+                            GridPane.columnIndex="3">
+
+                    <content>
+                        <VBox fx:id="amenitiesBox"
+                              spacing="5"
+                              style="-fx-padding: 8;"/>
+                    </content>
+
+                </ScrollPane>
+
+                <CheckBox fx:id="availableCheckBox"
+                          text="Available"
+                          selected="true"
+                          GridPane.rowIndex="3"
+                          GridPane.columnIndex="1"/>
+            </GridPane>
+
+            <HBox spacing="15" alignment="CENTER">
+                <Button text="Add Room"
+                        onAction="#addRoom"
+                        styleClass="main-button"/>
+
+                <Button text="Update Selected"
+                        onAction="#updateRoom"
+                        styleClass="main-button"/>
+
+                <Button text="Delete Selected"
+                        onAction="#deleteRoom"
+                        styleClass="secondary-button"/>
+
+                <Button text="Clear Fields"
+                        onAction="#clearFields"
+                        styleClass="secondary-button"/>
+            </HBox>
+
+            <TableView fx:id="roomsTable" prefHeight="300">
+                <columns>
+                    <TableColumn fx:id="roomIdColumn" text="Room ID" prefWidth="90"/>
+                    <TableColumn fx:id="typeColumn" text="Type" prefWidth="120"/>
+                    <TableColumn fx:id="floorColumn" text="Floor" prefWidth="90"/>
+                    <TableColumn fx:id="priceColumn" text="Price" prefWidth="120"/>
+                    <TableColumn fx:id="amenitiesColumn" text="Amenities" prefWidth="330"/>
+                    <TableColumn fx:id="availabilityColumn" text="Availability" prefWidth="130"/>
+                </columns>
+            </TableView>
+
+            <Label fx:id="messageLabel"/>
+
+        </VBox>
+    </center>
+
+</BorderPane>
