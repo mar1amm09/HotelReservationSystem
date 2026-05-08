@@ -12,7 +12,10 @@ public class Invoice {
     protected List<paymentMethod> paymentMethods;
     private LocalDate paymentDate;
     private  ReservationType type;
-    public Invoice(double totalAmount, List<paymentMethod> paymentMethods, LocalDate paymentDate,ReservationType type){
+   public Invoice(double totalAmount,
+               List<paymentMethod> paymentMethods,
+               LocalDate paymentDate,
+               ReservationType type){
         this.paymentMethods = paymentMethods;
         this.paymentDate = paymentDate;
              this.type= type;
