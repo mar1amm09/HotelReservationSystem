@@ -16,7 +16,7 @@ public class Reservation {
         COMPLETED
     }
     private Status status;
-    //constructor
+    //constructor 
     public Reservation(Guest guest, Room room, LocalDate checkIn, LocalDate checkOut, Status status,ReservationType type){
         this.guest = guest;
         this.room = room;
