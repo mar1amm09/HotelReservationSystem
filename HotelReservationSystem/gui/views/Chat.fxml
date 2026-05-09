@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="HotelReservationSystem.gui.controllers.ChatController"
+            styleClass="main-background">
+
+    <top>
+        <HBox spacing="20" alignment="CENTER_LEFT" styleClass="top-bar">
+            <padding>
+                <Insets top="20" right="25" bottom="20" left="25"/>
+            </padding>
+
+            <Label text="Live Chat" styleClass="title-label"/>
+
+            <Region HBox.hgrow="ALWAYS"/>
+
+            <Button text="Back"
+                    onAction="#goBack"
+                    styleClass="secondary-button"/>
+        </HBox>
+    </top>
+
+    <center>
+        <VBox spacing="15">
+            <padding>
+                <Insets top="25" right="35" bottom="25" left="35"/>
+            </padding>
+
+            <Label fx:id="userLabel" styleClass="subtitle-label"/>
+
+            <TextArea fx:id="chatArea"
+                      editable="false"
+                      wrapText="true"
+                      prefHeight="380"/>
+
+            <HBox spacing="10">
+                <TextField fx:id="messageField"
+                           promptText="Type your message..."
+                           HBox.hgrow="ALWAYS"/>
+
+                <Button text="Send"
+                        onAction="#sendMessage"
+                        styleClass="main-button"/>
+            </HBox>
+
+            <Label fx:id="messageLabel"/>
+
+        </VBox>
+    </center>
+
+</BorderPane>

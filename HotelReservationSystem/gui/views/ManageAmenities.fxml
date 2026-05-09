@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="HotelReservationSystem.gui.controllers.ManageAmenitiesController"
+            styleClass="main-background">
+
+    <top>
+        <HBox spacing="20" alignment="CENTER_LEFT" styleClass="top-bar">
+            <padding>
+                <Insets top="20" right="25" bottom="20" left="25"/>
+            </padding>
+
+            <Label text="Manage Amenities" styleClass="title-label"/>
+
+            <Region HBox.hgrow="ALWAYS"/>
+
+            <Button text="Back"
+                    onAction="#goBack"
+                    styleClass="secondary-button"/>
+        </HBox>
+    </top>
+
+    <center>
+        <VBox spacing="15">
+            <padding>
+                <Insets top="25" right="35" bottom="25" left="35"/>
+            </padding>
+
+            <GridPane hgap="12" vgap="12" styleClass="card">
+                <padding>
+                    <Insets top="20" right="20" bottom="20" left="20"/>
+                </padding>
+
+                <Label text="Amenity Name:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+
+                <TextField fx:id="amenityNameField"
+                           promptText="WiFi / TV / Mini-bar"
+                           GridPane.rowIndex="0"
+                           GridPane.columnIndex="1"/>
+            </GridPane>
+
+            <HBox spacing="15" alignment="CENTER">
+                <Button text="Add Amenity"
+                        onAction="#addAmenity"
+                        styleClass="main-button"/>
+
+                <Button text="Update Selected"
+                        onAction="#updateAmenity"
+                        styleClass="main-button"/>
+
+                <Button text="Delete Selected"
+                        onAction="#deleteAmenity"
+                        styleClass="secondary-button"/>
+
+                <Button text="Clear Fields"
+                        onAction="#clearFields"
+                        styleClass="secondary-button"/>
+            </HBox>
+
+            <TableView fx:id="amenitiesTable" prefHeight="350">
+                <columns>
+                    <TableColumn fx:id="amenityNameColumn" text="Amenity Name" prefWidth="350"/>
+                </columns>
+            </TableView>
+
+            <Label fx:id="messageLabel"/>
+
+        </VBox>
+    </center>
+
+</BorderPane>

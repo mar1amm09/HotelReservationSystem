@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="HotelReservationSystem.gui.controllers.ReservationController"
+            styleClass="main-background">
+
+    <top>
+        <HBox spacing="20" alignment="CENTER_LEFT" styleClass="top-bar">
+            <padding>
+                <Insets top="20" right="25" bottom="20" left="25"/>
+            </padding>
+
+            <Label text="Make Reservation" styleClass="title-label"/>
+
+            <Region HBox.hgrow="ALWAYS"/>
+
+            <Button text="Back"
+                    onAction="#goBack"
+                    styleClass="secondary-button"/>
+        </HBox>
+    </top>
+
+    <center>
+        <VBox spacing="18" alignment="TOP_CENTER">
+            <padding>
+                <Insets top="30" right="40" bottom="30" left="40"/>
+            </padding>
+
+            <GridPane hgap="15" vgap="15" maxWidth="550" styleClass="card">
+                <padding>
+                    <Insets top="25" right="25" bottom="25" left="25"/>
+                </padding>
+
+                <Label text="Selected Room:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+                <Label fx:id="roomLabel" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+
+                <Label text="Room Type:" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+                <Label fx:id="typeLabel" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+
+                <Label text="Price per Night:" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+                <Label fx:id="priceLabel" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+
+                <Label text="Check-in Date:" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+                <DatePicker fx:id="checkInPicker" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+
+                <Label text="Check-out Date:" GridPane.rowIndex="4" GridPane.columnIndex="0"/>
+                <DatePicker fx:id="checkOutPicker" GridPane.rowIndex="4" GridPane.columnIndex="1"/>
+
+                <Label text="Reservation Type:" GridPane.rowIndex="5" GridPane.columnIndex="0"/>
+                <ComboBox fx:id="reservationTypeCombo"
+                          promptText="Choose type"
+                          GridPane.rowIndex="5"
+                          GridPane.columnIndex="1"/>
+
+                <Label text="Total Price:" GridPane.rowIndex="6" GridPane.columnIndex="0"/>
+                <Label fx:id="totalPriceLabel" text="0 EGP" GridPane.rowIndex="6" GridPane.columnIndex="1"/>
+            </GridPane>
+
+            <Button text="Confirm Reservation"
+                    onAction="#confirmReservation"
+                    styleClass="main-button"/>
+
+            <Label fx:id="messageLabel"/>
+
+        </VBox>
+    </center>
+
+</BorderPane>
